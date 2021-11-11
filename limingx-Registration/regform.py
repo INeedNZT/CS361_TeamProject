@@ -4,81 +4,62 @@ from tkinter import messagebox as mb
 import datetime
 import csv
 
-def fun():
-    root = Tk()
-    root.geometry('520x540')
-    root.title("Registration Form")
-    root.configure(background='grey')
+
+root = Tk()
+root.geometry('520x540')
+root.title("Registration Form")
+root.configure(background='grey')
 
 # creating labels and entry widgets
 
 
-    l1 = Label(root, text="Course Registration form",width=25,font=("times",20,"bold"),bg='blue',fg='white')
-    l1.place(x=70,y=50)
-    l2 = Label(root, text="Full Name",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    l2.place(x=70,y=130)
-    e1 = Entry(root,width=30,bd=2)
-    e1.place(x=240,y=130)
-    l3 = Label(root, text="Email",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    l3.place(x=70,y=180)
-    e2 = Entry(root,width=30,bd=2)
-    e2.place(x=240,y=180)
-    # l4 = Label(root, text="DOB",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    # l4.place(x=70,y=230)
+l1 = Label(root, text="Course Registration form",width=25,font=("times",20,"bold"),bg='blue',fg='white')
+l1.place(x=70,y=50)
+l2 = Label(root, text="Full Name",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+l2.place(x=70,y=130)
+e1 = Entry(root,width=30,bd=2)
+e1.place(x=240,y=130)
+l3 = Label(root, text="Email",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+l3.place(x=70,y=180)
+e2 = Entry(root,width=30,bd=2)
+e2.place(x=240,y=180)
+# l4 = Label(root, text="DOB",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+# l4.place(x=70,y=230)
 
-    # dateEntry -Date selection entry with drop-down calendar
-    # dob = DateEntry(root, width=27, background='brown', foreground='white',date_pattern='dd/mm/Y', borderwidth=3)
-    # dob.place(x=240,y=230)
+# dateEntry -Date selection entry with drop-down calendar
+# dob = DateEntry(root, width=27, background='brown', foreground='white',date_pattern='dd/mm/Y', borderwidth=3)
+# dob.place(x=240,y=230)
 
-    l5 = Label(root, text="Gender", width=20, font=("times",12,"bold"),anchor="w",bg='grey')
-    l5.place(x=70,y=230)
+l5 = Label(root, text="Gender", width=20, font=("times",12,"bold"),anchor="w",bg='grey')
+l5.place(x=70,y=230)
 
-    # radiobuttons
-    var = IntVar()
-    r1 = Radiobutton(root, text="Male", variable=var, value=1, font=("times",12),bg='grey')
-    r1.place(x=235,y=230)
-    r2 = Radiobutton(root, text="Female", variable=var, value=2, font=("times",12),bg='grey')
-    r2.place(x=315,y=230)
+# radiobuttons
+var = IntVar()
+r1 = Radiobutton(root, text="Male", variable=var, value=1, font=("times",12),bg='grey')
+r1.place(x=235,y=230)
+r2 = Radiobutton(root, text="Female", variable=var, value=2, font=("times",12),bg='grey')
+r2.place(x=315,y=230)
 
-    l6 = Label(root, text="Contact no.",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    l6.place(x=70,y=270)
-    e3 = Entry(root,width=30,bd=2)
-    e3.place(x=240,y=270)
-
-
-
-
-    l7 = Label(root, text="Select course",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    l7.place(x=70,y=310)
-
-
-
-    # create a dropdown menu with the OptionMenu widget
-    cvar = StringVar()
-    cvar.set("Select course")
-    option = ("Python", "Javascript", "Perl","Java")
-    o = OptionMenu(root,cvar, *option)
-    o.config(font=("times",11),bd=3)
-    o.place(x=240,y=310,width=190)
+l6 = Label(root, text="Contact no.",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+l6.place(x=70,y=270)
+e3 = Entry(root,width=30,bd=2)
+e3.place(x=240,y=270)
 
 
 
 
+l7 = Label(root, text="Select course",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+l7.place(x=70,y=310)
 
 
 
-    l8 = Label(root, text="Credit Registered",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
-    l8.place(x=70,y=370)
-
-
-
-    # create a dropdown menu with the OptionMenu widget
-    cvar = StringVar()
-    cvar.set("Credit Registered")
-    option = ("3", "4", "5")
-    o = OptionMenu(root,cvar, *option)
-    o.config(font=("times",11),bd=3)
-    o.place(x=240,y=370,width=190)
+# create a dropdown menu with the OptionMenu widget
+cvar = StringVar()
+cvar.set("Select course")
+option = ("Python", "Javascript", "Perl","Java")
+o = OptionMenu(root,cvar, *option)
+o.config(font=("times",11),bd=3)
+o.place(x=240,y=310,width=190)
 
 
 
@@ -86,16 +67,37 @@ def fun():
 
 
 
+l8 = Label(root, text="Credit Registered",width=20,font=("times",12,"bold"),anchor="w",bg='grey')
+l8.place(x=70,y=370)
 
 
 
-    # submit and cancel buttons
-    asd = Button(root, text='Submit',command=saveinfo,width=15,bg='green',fg='white',font=("times",12,"bold"))
-    asd.place(x=120,y=440)
-    asdf = Button(root, text='Cancel',command=root.destroy,width=15,bg='maroon',fg='white',font=("times",12,"bold"))
-    asdf.place(x=320,y=440)
+# create a dropdown menu with the OptionMenu widget
+cvar = StringVar()
+cvar.set("Credit Registered")
+option = ("3", "4", "5")
+o = OptionMenu(root,cvar, *option)
+o.config(font=("times",11),bd=3)
+o.place(x=240,y=370,width=190)
 
-    root.mainloop()
+
+def saveinfo():
+    save()
+    msg()
+
+
+
+
+
+
+
+# submit and cancel buttons
+asd = Button(root, text='Submit',command=saveinfo,width=15,bg='green',fg='white',font=("times",12,"bold"))
+asd.place(x=120,y=440)
+asdf = Button(root, text='Cancel',command=root.destroy,width=15,bg='maroon',fg='white',font=("times",12,"bold"))
+asdf.place(x=320,y=440)
+
+
 
 
 
@@ -140,12 +142,14 @@ def save():
     f.close()
 
     #save data in csv file
-    with open('Regfile.csv', 'a') as fs:
+    with open('../limingx-CSV-database-service/Regfile.csv', 'a') as fs:
         w = csv.writer(fs, dialect='excel-tab')
         # w.writerow([now.strftime("%d-%m-%Y %H:%M"), e1.get(),e2.get(),e3.get(),d,gender,course])
         w.writerow([now.strftime("%d-%m-%Y %H:%M"), e1.get(),e2.get(),e3.get(),gender,course])
         fs.close()
 
-def saveinfo():
-    save()
-    msg()
+
+
+
+
+root.mainloop()
