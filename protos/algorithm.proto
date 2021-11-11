@@ -1,0 +1,15 @@
+syntax = "proto3"; 
+
+service Algorithm {
+   rpc Add(Two) returns (One) {}
+}
+
+message Two {
+  int32 number1 = 1;
+  int32 number2 = 2;
+}
+
+message One {
+  int32 number1 = 1;
+}
+
