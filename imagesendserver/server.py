@@ -5,27 +5,30 @@ import grpc
 import imagesend_pb2
 import imagesend_pb2_grpc
 
+# open image according to name, put the image to a imagelist and return
+def open_image(image_name):
+    imagelist = []
+    with open(image_name+"1.jpg", 'rb') as f1:
+        image1 = f1.read()
+    imagelist.append(image1)
+    with open(image_name+"2.jpg", 'rb') as f2:
+        image2 = f2.read()
+    imagelist.append(image2)
+    return imagelist
+
 class ImageSend(imagesend_pb2_grpc.ImageSendServicer):
     def Imagerequest(self, request, context):
         if request.image_name1 == "New York":
-            with open("NY1.jpg", 'rb') as f1:
-                image1 = f1.read()
-            with open("NY2.jpg", 'rb') as f2:
-                image2 = f2.read()
-            return imagesend_pb2.images(images1 = image1, images2 = image2)
+            # use function open new york images
+            imagelist = open_image("New York")
+            # send images to client
+            return imagesend_pb2.images(images1 = imagelist[0], images2 = imagelist[1])
         elif request.image_name1 == "Los Angeles":
-            with open("LA1.jpg", 'rb') as f1:
-                image1 = f1.read()
-            with open("LA2.jpg", 'rb') as f2:
-                image2 = f2.read()
-            return imagesend_pb2.images(images1 = image1, images2 = image2)
+            imagelist = open_image("Los Angeles")
+            return imagesend_pb2.images(images1 = imagelist[0], images2 = imagelist[1])
         elif request.image_name1 == "San Francisco":
-            with open("SF1.jpg", 'rb') as f1:
-                image1 = f1.read()
-            with open("SF2.jpg", 'rb') as f2:
-                image2 = f2.read()
-            return imagesend_pb2.images(images1 = image1, images2 = image2)
-
+            imagelist = open_image("San Francisco")
+            return imagesend_pb2.images(images1 = imagelist[0], images2 = imagelist[1])
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
