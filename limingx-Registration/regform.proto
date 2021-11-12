@@ -19,8 +19,6 @@ service MyService {
     rpc MyMethod3 (stream MyRequest) returns (stream MyResponse) {
     }
 
-    rpc MyMethod4 (req) returns (res) {
-    }
 }
 
 message MyRequest {
@@ -32,13 +30,4 @@ message MyResponse {
     string name = 1;
     string sex = 2;
     int32 code = 3;
-}
-
-message req {
-    int32 code = 2;
-    int32 code = 2;
-}
-
-message res {
-    int32 code = 2;
 }
