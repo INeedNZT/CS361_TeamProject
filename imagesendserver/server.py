@@ -14,12 +14,16 @@ class ImageSend(imagesend_pb2_grpc.ImageSendServicer):
                 image2 = f2.read()
             return imagesend_pb2.images(images1 = image1, images2 = image2)
         elif request.image_name1 == "Los Angeles":
-            image1 = open("LA1.jpg", 'rb')
-            image2 = open("LA2.jpg", 'rb')
+            with open("LA1.jpg", 'rb') as f1:
+                image1 = f1.read()
+            with open("LA2.jpg", 'rb') as f2:
+                image2 = f2.read()
             return imagesend_pb2.images(images1 = image1, images2 = image2)
         elif request.image_name1 == "San Francisco":
-            image1 = open("SF1.jpg", 'rb')
-            image2 = open("SF2.jpg", 'rb')
+            with open("SF1.jpg", 'rb') as f1:
+                image1 = f1.read()
+            with open("SF2.jpg", 'rb') as f2:
+                image2 = f2.read()
             return imagesend_pb2.images(images1 = image1, images2 = image2)
 
 
