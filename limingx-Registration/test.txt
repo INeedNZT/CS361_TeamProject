@@ -1,0 +1,7 @@
+Name£ºlmx
+Gender:ÄÐ
+Age£º18
+Liked Course(s)£ºC ,JAVA ,Python ,SQL ,JS ,
+Favorite Shape£º³¤·½ÐÎ
+Favorite Course£º3
+Favorite Number£º5

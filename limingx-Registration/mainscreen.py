@@ -13,60 +13,48 @@ def start(root):
     
     cleanButton = tk.Button(root, text = "Clean all data", width=20, height=2, command=clean).place(x=150, y=60)
  
-    
-   
     ssButton= tk.Button(root, text = "Search Student", padx=31, pady=10, command=searchStudent)
     ssButton.place(x=150, y=110)
 
-    # scButton= Button(root, text = "Search Course", padx=31, pady=10)
-    # dsButton= Button(root, text = "Delete Student", padx=31, pady=10) 
-   
-    # regButton.pack()
-    
-    # regButton = Button(root, text = "Search Student", padx=31, pady=10)
-    # regButton.pack()
+    survey= Button(root, text = "Take a survey", padx=31, pady=10, command=surveyfile)
+    survey.place(x=150, y=160)
 
-    # regButton = Button(root, text = "Search Course", padx=33, pady=10)
-    # regButton.pack()
+    recover= Button(root, text = "Recover Data", padx=31, pady=10)
+    recover.place(x=150, y=210)
 
-    # regButton = Button(root, text = "Delete Student", padx=33, pady=10)
-    # regButton.pack()
 
-    # regButton = Button(root, text = "Delete Course", padx=35, pady=10)
-    # regButton.pack()
-
-#myLabel1 = Label(root, text= "There are ")
-#myLabel2 = Label(root, text= "and ")
-#myLabel3 = Label(root, text= "courses in the database.")
 
 def clean():
-    file = '../limingx-CSV-database-service/Regfile.csv'
+    file = 'Regfile.csv'
     if(os.path.exists(file) and os.path.isfile(file)):
         os.remove(file)
         print("file deleted")
+        top = Toplevel()
+        top.title("Course Registration System")
+        top.geometry("60x100")    # By default, it is kept as the geometry of the main window, but you can change it.
+        lab = Label(top, text="Data Cleaned!\n")
+    
+        lab.pack(pady=20)
+
+
     else:
         print("file not found")
-
+        top = Toplevel()
+        top.title("Course Registration System")
+        top.geometry("60x100")    # By default, it is kept as the geometry of the main window, but you can change it.
+        lab = Label(top, text="No file Found!\n")
+    
+        lab.pack(pady=20)
 
 def searchStudent():
     print("There currently have ")
-    file = open("../limingx-CSV-database-service/Regfile.csv")
+    file = open("Regfile.csv")
     reader = csv.reader(file)
     lines= len(list(reader))
     print(lines)
     print("registrations in the database. \n")
-
-    
-    # number = input('Enter student name: \n')
-
-    # #read csv, and split on "," the line
-    # csv_file = csv.reader(open('../limingx-CSV-database-service/Regfile.csv', "r"), delimiter=",")
-
-    
-
    
-   
-    with open('../limingx-CSV-database-service/Regfile.csv', "r") as csvfile:
+    with open('../limingx-CSV-web-scrap-service/Regfile.csv', "r") as csvfile:
         reader = csv.reader(csvfile)
         name = input('Enter student name: ')
         for row in reader:
@@ -79,7 +67,10 @@ def searchStudent():
 
 def change():
     # root.destroy()
-    exec(open("../limingx-Registration/regform.py").read())
+    exec(open("regform.py").read())
+
+def surveyfile():
+    exec(open("survey.py").read())
 
 def call():
     root = Tk()
@@ -90,4 +81,3 @@ def call():
     root.mainloop()
 
 call()
-
